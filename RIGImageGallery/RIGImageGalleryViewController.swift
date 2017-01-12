@@ -181,6 +181,13 @@ open class RIGImageGalleryViewController: UIPageViewController {
         traitCollectionChangeHandler?(self)
     }
 
+	open var visibleImageView: UIImageView? {
+		guard let vc = self.viewControllers?.first as? RIGSingleImageViewController else {return nil}
+		let sv = vc.scrollView
+		guard let iv = sv.contentView else {return nil}
+		return iv
+	}
+
 }
 
 extension RIGImageGalleryViewController: UIGestureRecognizerDelegate {

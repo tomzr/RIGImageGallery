@@ -44,7 +44,7 @@ class RIGAutoCenteringScrollView: UIScrollView {
         }
     }
 
-    fileprivate var contentView: UIImageView?
+	var contentView: UIImageView?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
