@@ -10,6 +10,20 @@ import UIKit
 
 open class RIGImageGalleryViewController: UIPageViewController {
 
+
+	open var onShow: (()->())?
+	open var onDismiss: (()->())?
+
+	override open var shouldAutorotate: Bool {
+		return true
+	}
+
+	override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+		return UIInterfaceOrientationMask.allButUpsideDown
+	}
+
+
+
     public typealias GalleryPositionUpdateHandler = (_ gallery: RIGImageGalleryViewController, _ position: Int, _ total: Int) -> ()
     public typealias ActionButtonPressedHandler = (_ gallery: RIGImageGalleryViewController, _ item: RIGImageGalleryItem) -> ()
     public typealias GalleryEventHandler = (RIGImageGalleryViewController) -> ()
@@ -165,7 +179,13 @@ open class RIGImageGalleryViewController: UIPageViewController {
             let photoPage =  RIGSingleImageViewController(viewerItem: images[currentImage])
             setViewControllers([photoPage], direction: .forward, animated: false, completion: nil)
         }
+		self.onShow?()
     }
+
+	open override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		self.onDismiss?()
+	}
 
     open override var prefersStatusBarHidden: Bool {
         return navigationBarsHidden
