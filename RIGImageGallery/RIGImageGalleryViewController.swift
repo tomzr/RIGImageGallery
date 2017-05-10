@@ -15,11 +15,15 @@ open class RIGImageGalleryViewController: UIPageViewController {
 	open var onDismiss: (()->())?
 
 	override open var shouldAutorotate: Bool {
-		return true
+		return UIDevice.current.userInterfaceIdiom != .pad
 	}
 
 	override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-		return UIInterfaceOrientationMask.allButUpsideDown
+		if UIDevice.current.userInterfaceIdiom != .pad {
+			return UIInterfaceOrientationMask.allButUpsideDown
+		} else {
+			return UIInterfaceOrientationMask.all
+		}
 	}
 
 
