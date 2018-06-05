@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RIGImageGallery"
-  s.version          = "0.2.2"
+  s.version          = "0.2.3"
   s.summary          = "An image gallery view controller designed to work with the Raizlabs Interface Guidelines for iOS."
 
   s.description      = <<-DESC
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'RIGImageGallery', 'RIGImageGallery/**/*'
+  s.source_files = 'RIGImageGallery/**/*.swift'
 
   s.frameworks   = 'Foundation', 'UIKit'
 
